@@ -22,6 +22,13 @@ class ProfileView(generics.RetrieveUpdateAPIView):
     def get_object(self):
         return self.request.user
     
+    def get_queryset(self):
+        if self.request.user.role in ['doctor', 'admin', 'nurse']:
+            return PatientProfile.objects.all()
+        return PatientProfile.objects.filter(user=self.request.user)
+    
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
 
 class LogoutView(APIView):
     def post(self, request):
