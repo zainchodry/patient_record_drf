@@ -182,3 +182,5 @@ EMAIL_HOST_USER = 'your_email@gmail.com'
 EMAIL_HOST_PASSWORD = 'your_app_password'
 
 DEFAULT_FROM_EMAIL = 'Hospital System <your_email@gmail.com>'
+
+
